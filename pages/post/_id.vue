@@ -1,0 +1,71 @@
+<template>
+    <article class="post">
+        <header class="post-header">
+            <div class="post-title">
+                <h1>Post title</h1>
+                <nuxt-link to="/"><i class="el-icon-back"></i>
+                 </nuxt-link>
+            </div>
+            <div class="post-info">
+                <small>
+                    <i class="el-icon-time"></i>
+                    {{new Date().toLocaleString()}}
+                </small>
+                <small>
+                     <i class="el-icon-view"></i>
+                    42
+                </small>
+            </div>
+            <div class="post-image">
+                <img
+                src="https://mywishcard.com/s/i2/4a/e/470x0_Jvv8ZnwHfgADcENUKizzLQnHxKUGX7Um___jpg____4_295ac986.jpg" 
+                alt="post image">
+            </div>
+        </header>
+        <main class="post-content">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam quasi error repudiandae eius ab provident odit natus, ipsum voluptatum ratione, soluta similique cum eum suscipit amet? At, enim magnam.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam quasi error repudiandae eius ab provident odit natus, ipsum voluptatum ratione, soluta similique cum eum suscipit amet? At, enim magnam.</p>
+
+        </main>
+
+    </article>
+</template>
+
+<script>
+// _ говорит о том что это будет динамический параметр и id название параметра
+export default {
+    validate({params}) {
+        // валидируем параметры адресной строки
+        // return !!(params.id)
+        return Boolean(params.id)
+    }
+}
+</script>
+
+<style>
+    .post {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .post-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .post-info {
+         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: .5rem;
+    }
+    .post-image img {
+        width: 100%;
+        height: auto;
+    }
+    .post-header {
+        margin-bottom: 2rem;
+    }
+
+</style>
+
