@@ -27,22 +27,45 @@
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam quasi error repudiandae eius ab provident odit natus, ipsum voluptatum ratione, soluta similique cum eum suscipit amet? At, enim magnam.</p>
 
         </main>
+        <footer>
+            <app-comment-form></app-comment-form>
+            <div class="comments" v-if="true">
+                <app-comment
+                    v-for="comment in 4"
+                    :key="comment"
+                    :comment="comment"
+                >
+
+                </app-comment>
+            </div>
+            <div v-else class="text-center">Комментариев нет</div>
+        </footer>
+       
 
     </article>
 </template>
 
 <script>
+import AppComment from '@/components/main/Comment'
+import AppCommentForm from '@/components/main/CommentForm'
 // _ говорит о том что это будет динамический параметр и id название параметра
 export default {
     validate({params}) {
         // валидируем параметры адресной строки
         // return !!(params.id)
         return Boolean(params.id)
+    },
+    components: {
+        AppComment,
+        AppCommentForm
     }
 }
 </script>
 
 <style>
+   .text-center {
+       text-align: center;
+   }
     .post {
         max-width: 600px;
         margin: 0 auto;
