@@ -7,27 +7,41 @@ export const state = () => ({
     token: null
 })
 
-export const mutations  = {
+export const mutations = {
     SetToken(state, token) {
         state.token = token
     },
-    clearToken (state) {
+    clearToken(state) {
         state.token = null
     }
 }
 
-export const actions  = {
-    async login  ({commit, dispatch}, formData) {
-        const token =  await new Promise (resolve => {
-            setTimeout(() => resolve('mock-token'), 2000)
-        })
-        dispatch('setToken', token)
-        
+export const actions = {
+    async login({ commit, dispatch }, formData) {
+        try {
+            const token = await new Promise((resolve, reject) => {
+                setTimeout(() => resolve('mock-token'), 2000)
+            })
+            dispatch('setToken', token)
+        } catch (e) {
+            // Третий параметр передать что setError смотрим из корня
+            commit('setError', e, { root: true })
+            throw e
+        }
+
+
     },
-    setToken ({commit}, token) {
+    async createUser({commit},formData) {
+        try {
+            console.log('createUser',formData)
+        } catch (e) {
+
+        }
+    },
+    setToken({ commit }, token) {
         commit('SetToken', token)
     },
-    logout({commit}) {
+    logout({ commit }) {
         commit('clearToken')
     }
 }
