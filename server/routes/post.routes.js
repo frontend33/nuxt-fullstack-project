@@ -18,7 +18,7 @@ router.get(
     ctr.getAll
 )
 
-router.getById(
+router.get(
     '/admin/:id',
     passport.authenticate('jwt', {session: false}),
     ctr.getById

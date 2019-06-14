@@ -6,6 +6,7 @@ const passportStratagy = require('./middleware/passport-strategy')
 const authRoutes = require('./routes/auth.routes')
 // Не обязательно писать index.js по умолчанию если не укзан файл смотрит на него
 const postRoutes = require('./routes/post.routes')
+const commentRoutes = require('./routes/comment.routes')
 const keys = require('./keys')
 const app = express()
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
 app.use('api/post', postRoutes)
+app.use('/api/comment', commentRoutes)
 
 module.exports = app
 
