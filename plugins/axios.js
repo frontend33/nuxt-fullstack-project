@@ -1,6 +1,14 @@
 import { Store } from "vuex";
-
-export default function ({$axios}) {
+// Если что то с сервер сайт ренерингом будет не так фиксить тут
+export default function ({$axios, redirect, store}) {
+    $axios.interceptors.request.use(request => {
+        // Если пользователь вошел в систему
+        if (store.getters['auth/isAuthenticated'] && !request.headers.common['Authorization']) {
+            const token = store.getters['auth/token']
+            request.headers.common['Authorization'] = `Bearer ${token}`
+        }
+        return request
+    })
     $axios.onError(error => {
         if(error.response) {
             if(error.response.status === 401) {
