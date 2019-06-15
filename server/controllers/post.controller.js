@@ -8,12 +8,13 @@ module.exports.create = async (req, res) => {
 })
 
 try {
-    await post.save
+    await post.save()
     res.status(201).json(post)
 } catch (e) {
     res.status(500).json(e)
 }
 }
+
 
 module.exports.getAll = async (req, res) => {
     try {

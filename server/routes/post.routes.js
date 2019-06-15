@@ -8,8 +8,8 @@ const router = Router()
 // /api/post/admin
 router.post(
     '/admin/',
-    upload.single('image'),
     passport.authenticate('jwt', {session: false}),
+    upload.single('image'),
     ctr.create
 )
 router.get(

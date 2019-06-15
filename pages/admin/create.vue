@@ -10,7 +10,7 @@
       <h1 class="mb">Создать новый пост</h1>
 
       <el-form-item label="Введите название поста" prop="title">
-        <el-input v-model.trim="controls.title"/>
+        <el-input v-model="controls.title"/>
       </el-form-item>
 
       <el-form-item label="Текст в формате .md или .html" prop="text">
@@ -24,12 +24,11 @@
       </el-dialog>
 
       <el-upload
-      class="mb"
+        class="mb"
         drag
         ref="upload"
         action="https://jsonplaceholder.typicode.com/posts/"
         :on-change = "handleImageChange"
-        multiple
         :auto-upload = "false"
       >
         <i class="el-icon-upload"></i>
