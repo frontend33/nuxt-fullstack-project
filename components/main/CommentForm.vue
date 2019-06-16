@@ -26,7 +26,7 @@ export default {
     props: {
         postId: {
             type: String,
-            required: false
+            required: true
         }
     },
   data() {

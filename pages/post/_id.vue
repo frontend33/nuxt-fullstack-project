@@ -10,7 +10,7 @@
       <div class="post-info">
         <small>
           <i class="el-icon-time"></i>
-          {{new Date(post.date).toLocaleString()}}
+          {{post.date | date }}
         </small>
         <small>
           <i class="el-icon-view"></i>
@@ -43,6 +43,11 @@ export default {
     // валидируем параметры адресной строки
     // return !!(params.id)
     return Boolean(params.id);
+  },
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    };
   },
   async asyncData({ store, params }) {
     const post = await store.dispatch("post/fetchById", params.id);
