@@ -5,6 +5,7 @@
     class="el-menu-vertical-demo"
     :style= "{height:'100%'}"
   >
+  
     <el-menu-item index="/admin">
       <i class="el-icon-menu"></i>
       <span>Аналитика</span>
