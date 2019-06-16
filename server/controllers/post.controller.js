@@ -9,8 +9,10 @@ module.exports.create = async (req, res) => {
 
 try {
     await post.save()
+    console.log(post)
     res.status(201).json(post)
 } catch (e) {
+    console.log('zhora', e)
     res.status(500).json(e)
 }
 }
@@ -26,9 +28,10 @@ module.exports.getAll = async (req, res) => {
     
 }
 
+
 module.exports.getById = async (req, res) => {
     try {
-        await Post,findById(req.params.id).populate('comments').exec((error,post) => {
+        await Post.findById(req.params.id).populate('comments').exec((error,post) => {
             res.json(post)
         })
     } catch (e) {

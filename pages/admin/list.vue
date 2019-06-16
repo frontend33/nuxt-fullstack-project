@@ -15,7 +15,6 @@
           <span style="margin-left: 10px">{{ views }}</span>
         </template>
       </el-table-column>
-
       <el-table-column label="Комментарии">
         <template slot-scope="{row: {comments}}">
           <i class="el-icon-message"></i>

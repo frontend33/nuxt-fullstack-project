@@ -5,15 +5,15 @@
         class="post"
     >
      <header slot="header" class="post-header">
-        <h3>Post title</h3>
+        <h3>{{post.title}}</h3>
         <small>
             <i class="el-icon-time"></i>
-            {{new Date().toLocaleString()}}
+            {{new Date(post.date).toLocaleString()}}
             </small>
     </header>
     <div class="post-body">
         <img 
-        src="https://mywishcard.com/s/i2/4a/e/470x0_Jvv8ZnwHfgADcENUKizzLQnHxKUGX7Um___jpg____4_295ac986.jpg"
+        :src="post.imageUrl"
         alt="post image"
         class="post-img"
         >
@@ -22,7 +22,7 @@
           <el-button round @click="openPost">Открыть</el-button>
           <span>
               <i class="el-icon-message"></i>
-              12
+              {{post.comments.length}}
           </span>
     </footer>
     </el-card>
@@ -31,9 +31,15 @@
 
 <script>
 export default {
+    props: {
+        post : {
+            type: Object,
+            required: true
+        }
+    },
     methods: {
         openPost () {
-            const id = 'test-id'
+            const id = this.post._id
             this.$router.push(`/post/${id}`)
         }
     }
